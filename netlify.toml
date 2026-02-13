@@ -1,0 +1,8 @@
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/search-flights"
+  to = "/.netlify/functions/search-flights"
+  status = 200

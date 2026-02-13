@@ -1,0 +1,253 @@
+:root {
+  --bg-deep: #0b2239;
+  --bg-mid: #133c64;
+  --panel: rgba(255, 255, 255, 0.9);
+  --panel-border: rgba(255, 255, 255, 0.4);
+  --text-main: #0f2943;
+  --text-soft: #365a7c;
+  --accent: #ff7a18;
+  --accent-strong: #ef4e1b;
+  --card-shadow: 0 18px 35px rgba(5, 29, 52, 0.22);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Manrope", sans-serif;
+  color: var(--text-main);
+  background: linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-mid) 52%, #2f7bb8 100%);
+  overflow-x: hidden;
+}
+
+.sky-glow {
+  position: fixed;
+  z-index: 0;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.sky-glow-a {
+  top: -160px;
+  left: -120px;
+  background: radial-gradient(circle, rgba(255, 222, 170, 0.48), rgba(255, 222, 170, 0));
+}
+
+.sky-glow-b {
+  right: -140px;
+  bottom: -200px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0));
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: min(1040px, 92%);
+  margin: 44px auto;
+}
+
+.hero {
+  color: #ffffff;
+  margin-bottom: 28px;
+  animation: slideIn 650ms ease-out;
+}
+
+.hero-kicker {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin: 0 0 10px;
+  color: #ffe0b7;
+}
+
+h1 {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  margin: 12px 0 0;
+  max-width: 680px;
+  color: #e3f2ff;
+}
+
+.search-panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  padding: 24px;
+  backdrop-filter: blur(6px);
+  animation: slideIn 750ms ease-out;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+select,
+input,
+button {
+  font: inherit;
+}
+
+select,
+input {
+  border: 1px solid #c7d8e9;
+  border-radius: 12px;
+  padding: 12px 13px;
+  color: #1f3f60;
+  background: #ffffff;
+}
+
+select:focus,
+input:focus {
+  outline: 2px solid rgba(239, 78, 27, 0.35);
+  border-color: #ef4e1b;
+}
+
+#search-btn {
+  margin-top: 18px;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-weight: 800;
+  color: white;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-strong) 100%);
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+#search-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(239, 78, 27, 0.28);
+}
+
+.status {
+  min-height: 24px;
+  margin: 10px 0 0;
+  color: var(--text-soft);
+  font-weight: 700;
+}
+
+h2 {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: #ffffff;
+  margin: 28px 0 12px;
+}
+
+.results {
+  display: grid;
+  gap: 12px;
+}
+
+.flight-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #dce7f2;
+  box-shadow: var(--card-shadow);
+  padding: 18px;
+  animation: rise 420ms ease both;
+}
+
+.flight-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+.price {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #12385d;
+}
+
+.badge {
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: #7c3f00;
+  background: #ffe7cf;
+}
+
+.leg {
+  margin-top: 12px;
+  border-top: 1px solid #e7eef6;
+  padding-top: 12px;
+}
+
+.leg-title {
+  margin: 0 0 5px;
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.route {
+  margin: 0;
+  font-weight: 800;
+}
+
+.meta {
+  margin: 4px 0 0;
+  color: #567392;
+  font-size: 0.95rem;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 760px) {
+  .container {
+    margin: 24px auto 36px;
+  }
+
+  .search-panel {
+    padding: 16px;
+  }
+
+  .field-grid {
+    grid-template-columns: 1fr;
+  }
+}

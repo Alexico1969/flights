@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Flight</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="sky-glow sky-glow-a"></div>
+    <div class="sky-glow sky-glow-b"></div>
+    <main class="container">
+      <section class="hero">
+        <p class="hero-kicker">Air Travel Planner</p>
+        <h1>Find Your Best Round-Trip Flight</h1>
+        <p class="hero-subtitle">
+          Search from JFK, La Guardia, and Amsterdam to compare multiple options for your next trip.
+        </p>
+      </section>
+
+      <section class="search-panel">
+        <form id="flight-form">
+          <div class="field-grid">
+            <label class="field">
+              <span>From</span>
+              <select id="origin" required>
+                <option value="">Select airport</option>
+                <option value="JFK">JFK - John F. Kennedy</option>
+                <option value="LGA">La Guardia</option>
+                <option value="AMS">Amsterdam Schiphol</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>To</span>
+              <select id="destination" required>
+                <option value="">Select airport</option>
+                <option value="JFK">JFK - John F. Kennedy</option>
+                <option value="LGA">La Guardia</option>
+                <option value="AMS">Amsterdam Schiphol</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Departure Date</span>
+              <input id="departureDate" type="date" required />
+            </label>
+
+            <label class="field">
+              <span>Return Date</span>
+              <input id="returnDate" type="date" required />
+            </label>
+          </div>
+
+          <button id="search-btn" type="submit">Search Flights</button>
+          <p id="status" class="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section>
+        <h2>Flight Options</h2>
+        <div id="results" class="results"></div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
