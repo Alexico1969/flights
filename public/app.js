@@ -64,8 +64,8 @@ function googleFlightsUrl(offer) {
   if (!from || !to || !outDate || !inDate) {
     return "https://www.google.com/travel/flights";
   }
-
-  return `https://www.google.com/travel/flights?hl=en#flt=${from}.${to}.${outDate}*${to}.${from}.${inDate};c:USD;e:1;sd:1;t:f`;
+  const query = `Flights to ${to} from ${from} on ${outDate} through ${inDate}`;
+  return `https://www.google.com/travel/flights?q=${encodeURIComponent(query)}&curr=USD`;
 }
 
 function renderOffers(offers) {
