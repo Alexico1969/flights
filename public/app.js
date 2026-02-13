@@ -55,6 +55,19 @@ function humanDuration(isoDuration) {
   return parts.join(" ") || isoDuration;
 }
 
+function googleFlightsUrl(offer) {
+  const outDate = (offer.outbound.departureTime || "").split("T")[0];
+  const inDate = (offer.inbound.departureTime || "").split("T")[0];
+  const from = offer.outbound.departureAirport;
+  const to = offer.outbound.arrivalAirport;
+
+  if (!from || !to || !outDate || !inDate) {
+    return "https://www.google.com/travel/flights";
+  }
+
+  return `https://www.google.com/travel/flights?hl=en#flt=${from}.${to}.${outDate}*${to}.${from}.${inDate};c:USD;e:1;sd:1;t:f`;
+}
+
 function renderOffers(offers) {
   if (!offers.length) {
     results.innerHTML = "<p class='flight-card'>No flights found for these dates and airports.</p>";
@@ -64,6 +77,7 @@ function renderOffers(offers) {
   results.innerHTML = offers
     .map((offer, idx) => {
       const airlines = offer.validatingAirlineCodes?.join(", ") || "Airline unavailable";
+      const flightUrl = googleFlightsUrl(offer);
       return `
         <article class="flight-card" style="animation-delay:${Math.min(idx * 70, 350)}ms">
           <div class="flight-top">
@@ -87,6 +101,10 @@ function renderOffers(offers) {
               ${fmtDateTime(offer.inbound.departureTime)} to ${fmtDateTime(offer.inbound.arrivalTime)}
               | ${humanDuration(offer.inbound.duration)} | Stops: ${offer.inbound.stops}
             </p>
+          </div>
+
+          <div class="leg">
+            <a href="${flightUrl}" target="_blank" rel="noopener noreferrer">View Flight Webpage</a>
           </div>
         </article>
       `;
