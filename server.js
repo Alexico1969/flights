@@ -74,6 +74,7 @@ app.post("/api/search-flights", async (req, res) => {
       departureDate,
       returnDate,
       adults: "1",
+      includedCheckedBagsOnly: "true",
       nonStop: "false",
       currencyCode: "USD",
       max: "12"
