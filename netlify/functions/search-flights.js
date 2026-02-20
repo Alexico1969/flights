@@ -77,7 +77,6 @@ exports.handler = async (event) => {
       departureDate,
       returnDate,
       adults: "1",
-      includedCheckedBagsOnly: "true",
       nonStop: "false",
       currencyCode: "USD",
       max: "12"
